@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserInfoService{
     UserInfo login(String userName, String password);
+
+    Boolean register(UserInfo userInfo);
 }

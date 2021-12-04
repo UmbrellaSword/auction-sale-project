@@ -14,6 +14,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserInfo login(String userName, String password) {
-        return userInfoMapper.getUserInfo(userName,password);
+        return userInfoMapper.getUserInfo(userName, password);
+    }
+
+    @Override
+    public Boolean register(UserInfo userInfo) {
+        return userInfoMapper.insertSelective(userInfo) > 0;
     }
 }
