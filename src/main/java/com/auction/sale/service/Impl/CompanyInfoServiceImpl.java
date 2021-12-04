@@ -16,4 +16,9 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
     public CompanyInfo login(String loginName, String password) {
         return companyInfoMapper.getUserInfo(loginName,password);
     }
+
+    @Override
+    public Boolean register(CompanyInfo companyInfo) {
+        return companyInfoMapper.insertSelective(companyInfo)>0;
+    }
 }

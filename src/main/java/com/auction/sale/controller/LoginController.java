@@ -1,6 +1,7 @@
 package com.auction.sale.controller;
 
 import com.auction.sale.domain.RestResponse;
+import com.auction.sale.domain.entity.CompanyInfo;
 import com.auction.sale.domain.entity.UserInfo;
 import com.auction.sale.service.CompanyInfoService;
 import com.auction.sale.service.UserInfoService;
@@ -33,5 +34,11 @@ public class LoginController {
     @ResponseBody
     public RestResponse loginByCompany(String loginName,String password){
         return RestResponse.buildSuccess(companyInfoService.login(loginName,password));
+    }
+
+    @RequestMapping(value = "registerByCompany",method = RequestMethod.POST)
+    @ResponseBody
+    public RestResponse register(@RequestBody CompanyInfo companyInfo){
+        return RestResponse.buildSuccess(companyInfoService.register(companyInfo));
     }
 }
