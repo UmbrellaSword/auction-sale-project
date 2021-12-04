@@ -11,5 +11,5 @@ public interface UserInfoMapper {
 
     int insertSelective(UserInfo record);
 
-    UserInfo getUserInfo(@Param("userName") String userName,@Param("password") String password);
+    UserInfo getUserInfo(@Param("loginName") String loginName,@Param("password") String password);
 }

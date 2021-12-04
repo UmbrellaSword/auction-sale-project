@@ -13,8 +13,8 @@ public class UserInfoServiceImpl implements UserInfoService {
     UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfo login(String userName, String password) {
-        return userInfoMapper.getUserInfo(userName, password);
+    public UserInfo login(String loginName, String password) {
+        return userInfoMapper.getUserInfo(loginName, password);
     }
 
     @Override

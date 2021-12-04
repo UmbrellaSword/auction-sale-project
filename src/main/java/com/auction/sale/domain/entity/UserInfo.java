@@ -4,6 +4,8 @@ public class UserInfo {
 
     private Integer id;
 
+    private String loginName;
+
     private String userName;
 
     private String password;

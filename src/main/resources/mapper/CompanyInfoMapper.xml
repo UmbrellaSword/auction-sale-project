@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.sale.mapper.CompanyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.auction.sale.domain.entity.CompanyInfo">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_remark" jdbcType="VARCHAR" property="companyRemark" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="authorization" jdbcType="VARCHAR" property="authorization" />
+    <result column="company_certificate" jdbcType="VARCHAR" property="companyCertificate" />
+    <result column="organization_certificate" jdbcType="VARCHAR" property="organizationCertificate" />
+    <result column="salary_certificate" jdbcType="VARCHAR" property="salaryCertificate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.auction.sale.domain.entity.CompanyInfo">
+    insert into t_company_info (id, company_name, company_remark, 
+      company_address, phone_number, login_name, 
+      password, authorization, company_certificate, 
+      organization_certificate, salary_certificate
+      )
+    values (#{id,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyRemark,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{authorization,jdbcType=VARCHAR}, #{companyCertificate,jdbcType=VARCHAR}, 
+      #{organizationCertificate,jdbcType=VARCHAR}, #{salaryCertificate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.auction.sale.domain.entity.CompanyInfo">
+    insert into t_company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyRemark != null">
+        company_remark,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="authorization != null">
+        authorization,
+      </if>
+      <if test="companyCertificate != null">
+        company_certificate,
+      </if>
+      <if test="organizationCertificate != null">
+        organization_certificate,
+      </if>
+      <if test="salaryCertificate != null">
+        salary_certificate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRemark != null">
+        #{companyRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="authorization != null">
+        #{authorization,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCertificate != null">
+        #{companyCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationCertificate != null">
+        #{organizationCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryCertificate != null">
+        #{salaryCertificate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="getUserInfo" resultMap="BaseResultMap">
+    select * from t_company_info where login_name = #{loginName} and password = #{password}
+  </select>
+</mapper>

@@ -3,6 +3,7 @@
 <mapper namespace="com.auction.sale.mapper.UserInfoMapper">
   <resultMap id="BaseResultMap" type="com.auction.sale.domain.entity.UserInfo">
     <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
@@ -75,6 +76,6 @@
     </trim>
   </insert>
   <select id="getUserInfo" resultMap="BaseResultMap">
-    select * from t_user_info where user_name = #{userName} and password = #{password}
+    select * from t_user_info where login_name = #{loginName} and password = #{password}
   </select>
 </mapper>
