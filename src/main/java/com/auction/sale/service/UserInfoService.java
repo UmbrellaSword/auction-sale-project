@@ -1,4 +1,4 @@
-package com.auction.sale.service.Impl;
+package com.auction.sale.service;
 
 import com.auction.sale.domain.entity.UserInfo;
 
