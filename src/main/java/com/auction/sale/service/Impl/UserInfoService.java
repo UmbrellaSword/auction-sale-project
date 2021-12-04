@@ -5,5 +5,5 @@ import com.auction.sale.domain.entity.UserInfo;
 import java.util.List;
 
 public interface UserInfoService{
-    List<UserInfo> getUserInfo();
+    UserInfo login(String userName, String password);
 }

@@ -15,7 +15,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     UserInfoMapper userInfoMapper;
 
     @Override
-    public List<UserInfo> getUserInfo() {
-        return userInfoMapper.getUserInfo();
+    public UserInfo login(String userName, String password) {
+        return userInfoMapper.getUserInfo(userName,password);
     }
 }
