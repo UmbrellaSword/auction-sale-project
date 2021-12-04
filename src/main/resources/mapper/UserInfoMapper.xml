@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.auction.sale.mapper.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.auction.sale.domain.entity.UserInfo">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone_number" jdbcType="INTEGER" property="phoneNumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="card_up" jdbcType="VARCHAR" property="cardUp" />
+    <result column="card_down" jdbcType="VARCHAR" property="cardDown" />
+    <result column="is_super" jdbcType="INTEGER" property="isSuper" />
+  </resultMap>
+  <insert id="insert" parameterType="com.auction.sale.domain.entity.UserInfo">
+    insert into t_user_info (id, user_name, password, 
+      phone_number, address, card_up, 
+      card_down, is_super)
+    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{phoneNumber,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{cardUp,jdbcType=VARCHAR}, 
+      #{cardDown,jdbcType=VARCHAR}, #{isSuper,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.auction.sale.domain.entity.UserInfo">
+    insert into t_user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="cardUp != null">
+        card_up,
+      </if>
+      <if test="cardDown != null">
+        card_down,
+      </if>
+      <if test="isSuper != null">
+        is_super,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="cardUp != null">
+        #{cardUp,jdbcType=VARCHAR},
+      </if>
+      <if test="cardDown != null">
+        #{cardDown,jdbcType=VARCHAR},
+      </if>
+      <if test="isSuper != null">
+        #{isSuper,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="getUserInfo" resultMap="BaseResultMap">
+    select * from t_user_info where user_name = #{userName} and password = #{password}
+  </select>
+</mapper>
